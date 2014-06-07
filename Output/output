@@ -1,0 +1,187 @@
+> db.inverted.find({"Key":"files"}).pretty()
+{
+        "Files" : [
+                {
+                        "File" : "AdobeFlash",
+                        "Location" : [
+                                "4.53",
+                                "4.64",
+                                "19.11",
+                                "29.45",
+                                "47.35",
+                                "47.61",
+                                "58.66",
+                                "60.112",
+                                "63.2",
+                                "65.49",
+                                "71.35",
+                                "71.45",
+                                "71.56",
+                                "71.90",
+                                "73.5",
+                                "74.25",
+                                "77.17"
+                        ]
+                },
+                {
+                        "File" : "Amiga",
+                        "Location" : [
+                                "58.69",
+                                "58.73"
+                        ]
+                },
+                {
+                        "File" : "APLprogramminglangu
+                        "Location" : [
+                                "21.33"
+                        ]
+                },
+                {
+                        "File" : "Apocrypha",
+                        "Location" : [
+                                "6.26"
+                        ]
+                },
+                {
+                        "File" : "Appeal",
+                        "Location" : [
+                                "7.3",
+                                "7.64",
+                                "16.23",
+                                "16.46"
+                        ]
+                },
+                {
+                        "File" : "AppleIIseries",
+                        "Location" : [
+                                "47.114",
+                                "81.134",
+                                "82.165",
+                                "83.56"
+                        ]
+                },
+                {
+                        "File" : "AronNimzowitsch",
+                        "Location" : [
+                                "14.66"
+                        ]
+                },
+                {
+                        "File" : "ASCII",
+                        "Location" : [
+                                "33.18",
+                                "33.104",
+                                "33.130"
+                        ]
+                },
+                {
+                        "File" : "ASCIIart",
+                        "Location" : [
+                                "15.17",
+                                "46.58",
+                                "51.50"
+                        ]
+                },
+                {
+                        "File" : "Assemblyline",
+                        "Location" : [
+                                "9.124"
+                        ]
+                },
+                {
+                        "File" : "AsynchronousTransfe
+                        "Location" : [
+                                "2.47"
+                        ]
+                },
+                {
+                        "File" : "AWK",
+                        "Location" : [
+                                "2.14",
+                                "3.6"
+                        ]
+                },
+                {
+                        "File" : "Bankruptcy",
+                        "Location" : [
+                                "86.46",
+                                "94.32"
+                        ]
+                },
+                {
+                        "File" : "Batman",
+                        "Location" : [
+                                "55.68"
+                        ]
+                },
+                {
+                        "File" : "BattleofWaterloo",
+                        "Location" : [
+                                "40.14"
+                        ]
+                },
+                {
+                        "File" : "BermudaTriangle",
+                        "Location" : [
+                                "27.19"
+                        ]
+                },
+                {
+                        "File" : "BillClinton",
+                        "Location" : [
+                                "48.3",
+                                "49.4",
+                                "49.41",
+                                "49.98"
+                        ]
+                }
+        ],
+        "Key" : "files",
+        "_id" : ObjectId("538f73fc91fa48c89ff8ad0e")
+}
+
+> db.inverted.find({"Key":"files"}).explain()
+{
+        "cursor" : "BtreeCursor Key_1",
+        "isMultiKey" : false,
+        "n" : 1,
+        "nscannedObjects" : 1,
+        "nscanned" : 1,
+        "nscannedObjectsAllPlans" : 1,
+        "nscannedAllPlans" : 1,
+        "scanAndOrder" : false,
+        "indexOnly" : false,
+        "nYields" : 0,
+        "nChunkSkips" : 0,
+        "millis" : 0,
+        "indexBounds" : {
+                "Key" : [
+                        [
+                                "files",
+                                "files"
+                        ]
+                ]
+        },
+        "server" : "SavaniBharat:27017"
+}
+
+> db.inverted.stats()
+{
+        "ns" : "index.inverted",
+        "count" : ***,
+        "size" : ***,
+        "avgObjSize" : 677.6485317912942,
+        "storageSize" : ***,
+        "numExtents" : ***,
+        "nindexes" : 2,
+        "lastExtentSize" : ***,
+        "paddingFactor" : ***,
+        "systemFlags" : 1,
+        "userFlags" : 0,
+        "totalIndexSize" : ***,
+        "indexSizes" : {
+                "_id_" : ***,
+                "Key_1" : ***
+        },
+        "ok" : 1
+}
