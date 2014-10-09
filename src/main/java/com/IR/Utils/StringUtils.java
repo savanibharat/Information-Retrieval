@@ -848,7 +848,7 @@ public class StringUtils {
 		if (isArrayNull(array)) {
 			return null;
 		}
-		LinkedHashMap<String, String> map = new LinkedHashMap<>();
+		LinkedHashMap<String, String> map = new LinkedHashMap<String, String>();
 		for (int i = 0; i < array.length; i++) {
 
 			if (charsToDelete != null) {
