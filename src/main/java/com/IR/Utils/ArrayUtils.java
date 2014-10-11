@@ -3,13 +3,11 @@ package com.IR.Utils;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ArrayUtils.
  */
@@ -37,11 +35,11 @@ public class ArrayUtils {
 		// to primitive
 
 		
-		Set<Object> a = new HashSet<Object>(); 
+		Set<Object> a = new LinkedHashSet<Object>(); 
 		/*a.add("a"); 
 		a.add("b");*/
 		System.out.println(a);
-		Set<Object> b = new HashSet<Object>();
+		Set<Object> b = new LinkedHashSet<Object>();
 		/*b.add("a");
 		b.add("d");*/
 		System.out.println(b);
@@ -100,14 +98,14 @@ public class ArrayUtils {
 
 		// Both set are empty
 		if (isEmpty(setA) && isEmpty(setB)) {
-			return new HashSet<T>();
+			return new LinkedHashSet<T>();
 		}
 
 		if (setA.equals(setB)) {
 			return setA;
 		}
 
-		Set<T> setC = new HashSet<T>();
+		Set<T> setC = new LinkedHashSet<T>();
 		Iterator<T> iterA = setA.iterator();
 		Iterator<T> iterB = setB.iterator();
 
@@ -131,24 +129,24 @@ public class ArrayUtils {
 	public static <T> Set<T> intersection(Set<T> setA, Set<T> setB) {
 		// SetA empty & SetB has values
 		if (isEmpty(setA) && !isEmpty(setB)) {
-			return Collections.unmodifiableSet(new HashSet<T>());
+			return Collections.unmodifiableSet(new LinkedHashSet<T>());
 		}
 
 		// SetA has values & SetB is empty
 		if (!isEmpty(setA) && isEmpty(setB)) {
-			return Collections.unmodifiableSet(new HashSet<T>());
+			return Collections.unmodifiableSet(new LinkedHashSet<T>());
 		}
 
 		// Both set are empty
 		if (isEmpty(setA) && isEmpty(setB)) {
-			return Collections.unmodifiableSet(new HashSet<T>());
+			return Collections.unmodifiableSet(new LinkedHashSet<T>());
 		}
 
 		if (setA.equals(setB)) {
 			return setA;
 		}
 
-		Set<T> setC = new HashSet<T>();
+		Set<T> setC = new LinkedHashSet<T>();
 		Iterator<T> iterA = setA.iterator();
 
 		while (iterA.hasNext()) {
@@ -227,7 +225,7 @@ public class ArrayUtils {
 
 		// Both set are empty
 		if (isEmpty(setA) && isEmpty(setB)) {
-			return Collections.unmodifiableSet(new HashSet<T>());
+			return Collections.unmodifiableSet(new LinkedHashSet<T>());
 		}
 		
 		T[] A=(T[]) setA.toArray();
@@ -254,11 +252,17 @@ public class ArrayUtils {
 		return Collections.unmodifiableSet(setC);
 	}
 
-	/** A = {1, 2, 3, 4, 5} and B = {3, 4, 5, 6, 7, 8}. 
+	/**
+	 *  A = {1, 2, 3, 4, 5} and B = {3, 4, 5, 6, 7, 8}. 
 	 * To find the difference A - B of these two sets, we begin by writing all of the elements of A, 
 	 * and then take away every element of A that is also an element of B. Since A shares the elements 
 	 * 3, 4 and 5 with B, this gives us the set difference 
 	 * A - B = {1, 2 }.
+	 *
+	 * @param <T> the generic type
+	 * @param setA the set a
+	 * @param setB the set b
+	 * @return the sets the
 	 */
 	
 	public static <T> Set<T> diffAbyB(Set<T> setA, Set<T> setB) {
@@ -275,19 +279,19 @@ public class ArrayUtils {
 
 		// Both set are empty
 		if (isEmpty(setA) && isEmpty(setB)) {
-			return Collections.unmodifiableSet(new HashSet<T>());
+			return Collections.unmodifiableSet(new LinkedHashSet<T>());
 		}
-		
-		Set<T> setC=new LinkedHashSet<T>();
-		Iterator<T> iterA=setA.iterator();
-		Iterator<T> iterB=setB.iterator();
-		
-		while(iterA.hasNext()){
+
+		Set<T> setC = new LinkedHashSet<T>();
+		Iterator<T> iterA = setA.iterator();
+		Iterator<T> iterB = setB.iterator();
+
+		while (iterA.hasNext()) {
 			setC.add(iterA.next());
 		}
-		while(iterB.hasNext()){
-			T o=iterB.next();
-			if(setC.contains(o)){
+		while (iterB.hasNext()) {
+			T o = iterB.next();
+			if (setC.contains(o)) {
 				setC.remove(o);
 			}
 		}
