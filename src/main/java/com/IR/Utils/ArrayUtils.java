@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -35,24 +36,24 @@ public class ArrayUtils {
 		// contains
 		// to primitive
 
-		/*Set<Object> a = new HashSet<Object>();
-		a.add("a");
-		a.add("a");
-		a.add("b");
-		a.add("c");
-		Set<Object> b = new HashSet<Object>();
-		b.add("b");
-		b.add("a");
-		b.add("a");
-		b.add("b");*/
-
 		
-		List<Object> list1 = new ArrayList<Object>(); 
+		Set<Object> a = new HashSet<Object>(); 
+		a.add("a"); 
+		a.add("b");
+		System.out.println(a);
+		Set<Object> b = new HashSet<Object>();
+		b.add("c");
+		b.add("d");
+		System.out.println(b);
+		
+		System.out.println(cartesianProduct(a,b));
+
+		List<Object> list1 = new ArrayList<Object>();
 		list1.add("a");
-		list1.add("a"); 
+		list1.add("a");
 		List<Object> list2 = new ArrayList<Object>();
-		list2.add("t"); 
-		list2.add("r"); 
+		list2.add("t");
+		list2.add("r");
 		list2.add("e");
 		// System.out.println(union(b,a));
 		/*
@@ -206,6 +207,48 @@ public class ArrayUtils {
 		return false;
 	}
 
+	@SuppressWarnings("unchecked")
+	public static <T> Set<T> cartesianProduct(Set<T> setA, Set<T> setB) {
+
+		// SetA empty & SetB has values
+		if (isEmpty(setA) && !isEmpty(setB)) {
+			return Collections.unmodifiableSet(setB);
+		}
+
+		// SetA has values & SetB is empty
+		if (!isEmpty(setA) && isEmpty(setB)) {
+			return Collections.unmodifiableSet(setA);
+		}
+
+		// Both set are empty
+		if (isEmpty(setA) && isEmpty(setB)) {
+			return Collections.unmodifiableSet(new HashSet<T>());
+		}
+		
+		T[] A=(T[]) setA.toArray();
+		T[] B=(T[]) setB.toArray();
+
+		ArrayList<ArrayList<T>> list=new ArrayList<ArrayList<T>>();
+		ArrayList<T> subList=new ArrayList<T>();
+		
+		for (int i = 0; i < A.length; i++) {
+			for (int j = 0; j < B.length; j++) {
+				
+				subList.add(A[i]);
+				subList.add(B[j]);
+				list.add(subList);
+				subList=new ArrayList<T>();
+			}
+		}
+		
+		Set<T> setC=new LinkedHashSet<T>();
+		Iterator<ArrayList<T>> listIter=list.iterator();
+		while(listIter.hasNext()){
+			setC.add((T) listIter.next());
+		}
+		return Collections.unmodifiableSet(setC);
+	}
+
 	/**
 	 * Union list.
 	 *
@@ -256,8 +299,7 @@ public class ArrayUtils {
 	 *            the list2
 	 * @return the list
 	 */
-	public static <T> List<T> intersectList(List<T> list1,
-			List<T> list2) {
+	public static <T> List<T> intersectList(List<T> list1, List<T> list2) {
 
 		if (isEmpty(list1) && isEmpty(list2)) {
 			return new ArrayList<T>();
@@ -286,6 +328,7 @@ public class ArrayUtils {
 		}
 		return list3;
 	}
+
 	public static <T> boolean isSubSetList(List<T> list1, List<T> list2) {
 
 		// SetA empty & SetB has values
@@ -320,9 +363,5 @@ public class ArrayUtils {
 			return true;
 		}
 		return false;
-	}
-	public static <T> List<T> show(List<T> generic){
-		return new ArrayList<T>();
-		
 	}
 }
