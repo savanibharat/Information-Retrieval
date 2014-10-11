@@ -37,24 +37,24 @@ public class ArrayUtils {
 		// to primitive
 
 		
-		Set<Object> a = new HashSet<Object>(); 
+		/*Set<Object> a = new HashSet<Object>(); 
 		a.add("a"); 
 		a.add("b");
 		System.out.println(a);
 		Set<Object> b = new HashSet<Object>();
 		b.add("c");
 		b.add("d");
-		System.out.println(b);
+		System.out.println(b);*/
 		
-		System.out.println(cartesianProduct(a,b));
+		//System.out.println(cartesianProduct(a,b));
 
 		List<Object> list1 = new ArrayList<Object>();
 		list1.add("a");
-		list1.add("a");
+		list1.add("b");
 		List<Object> list2 = new ArrayList<Object>();
-		list2.add("t");
-		list2.add("r");
-		list2.add("e");
+		list2.add("c");
+		list2.add("d");
+		System.out.println(cartesianProductList(list1,list2));
 		// System.out.println(union(b,a));
 		/*
 		 * System.out.println(isEmpty(a)); System.out.println(isEmpty(a));
@@ -81,10 +81,9 @@ public class ArrayUtils {
 	/**
 	 * Union.
 	 *
-	 * @param setA
-	 *            the set a
-	 * @param setB
-	 *            the set b
+	 * @param <T> the generic type
+	 * @param setA            the set a
+	 * @param setB            the set b
 	 * @return the sets the
 	 */
 	public static <T> Set<T> union(Set<T> setA, Set<T> setB) {
@@ -124,10 +123,9 @@ public class ArrayUtils {
 	/**
 	 * Intersection.
 	 *
-	 * @param setA
-	 *            the set a
-	 * @param setB
-	 *            the set b
+	 * @param <T> the generic type
+	 * @param setA            the set a
+	 * @param setB            the set b
 	 * @return the sets the
 	 */
 	public static <T> Set<T> intersection(Set<T> setA, Set<T> setB) {
@@ -165,10 +163,9 @@ public class ArrayUtils {
 	/**
 	 * Checks if is sub set.
 	 *
-	 * @param setA
-	 *            the set a
-	 * @param setB
-	 *            the set b
+	 * @param <T> the generic type
+	 * @param setA            the set a
+	 * @param setB            the set b
 	 * @return true, if is sub set
 	 */
 	public static <T> boolean isSubSet(Set<T> setA, Set<T> setB) {
@@ -207,6 +204,14 @@ public class ArrayUtils {
 		return false;
 	}
 
+	/**
+	 * Cartesian product.
+	 *
+	 * @param <T> the generic type
+	 * @param setA the set a
+	 * @param setB the set b
+	 * @return the sets the
+	 */
 	@SuppressWarnings("unchecked")
 	public static <T> Set<T> cartesianProduct(Set<T> setA, Set<T> setB) {
 
@@ -252,10 +257,9 @@ public class ArrayUtils {
 	/**
 	 * Union list.
 	 *
-	 * @param list1
-	 *            the list1
-	 * @param list2
-	 *            the list2
+	 * @param <T> the generic type
+	 * @param list1            the list1
+	 * @param list2            the list2
 	 * @return the list
 	 */
 	public static <T> List<T> unionList(List<T> list1, List<T> list2) {
@@ -293,10 +297,9 @@ public class ArrayUtils {
 	/**
 	 * Intersect list.
 	 *
-	 * @param list1
-	 *            the list1
-	 * @param list2
-	 *            the list2
+	 * @param <T> the generic type
+	 * @param list1            the list1
+	 * @param list2            the list2
 	 * @return the list
 	 */
 	public static <T> List<T> intersectList(List<T> list1, List<T> list2) {
@@ -329,6 +332,14 @@ public class ArrayUtils {
 		return list3;
 	}
 
+	/**
+	 * Checks if is sub set list.
+	 *
+	 * @param <T> the generic type
+	 * @param list1 the list1
+	 * @param list2 the list2
+	 * @return true, if is sub set list
+	 */
 	public static <T> boolean isSubSetList(List<T> list1, List<T> list2) {
 
 		// SetA empty & SetB has values
@@ -364,4 +375,55 @@ public class ArrayUtils {
 		}
 		return false;
 	}
+	
+	/**
+	 * Cartesian product list.
+	 *
+	 * @param <T> the generic type
+	 * @param setA the set a
+	 * @param setB the set b
+	 * @return the list
+	 */
+	@SuppressWarnings("unchecked")
+	public static <T> List<T> cartesianProductList(List<T> setA, List<T> setB) {
+
+		// SetA empty & SetB has values
+		if (isEmpty(setA) && !isEmpty(setB)) {
+			return setB;
+		}
+
+		// SetA has values & SetB is empty
+		if (!isEmpty(setA) && isEmpty(setB)) {
+			return setA;
+		}
+
+		// Both set are empty
+		if (isEmpty(setA) && isEmpty(setB)) {
+			return new ArrayList<T>();
+		}
+
+		T[] A = (T[]) setA.toArray();
+		T[] B = (T[]) setB.toArray();
+
+		ArrayList<ArrayList<T>> list = new ArrayList<ArrayList<T>>();
+		ArrayList<T> subList = new ArrayList<T>();
+
+		for (int i = 0; i < A.length; i++) {
+			for (int j = 0; j < B.length; j++) {
+				subList.add(A[i]);
+				subList.add(B[j]);
+				if (!list.contains(subList)) {
+					list.add(subList);
+				}
+				subList = new ArrayList<T>();
+			}
+		}
+		ArrayList<T> setC = new ArrayList<T>();
+		Iterator<ArrayList<T>> listIter = list.iterator();
+		while (listIter.hasNext()) {
+			setC.add((T) listIter.next());
+		}
+		return setC;
+	}
+	
 }
