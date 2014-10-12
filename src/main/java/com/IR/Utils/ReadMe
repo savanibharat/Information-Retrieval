@@ -1,2 +1,99 @@
 Committing test ReadMe
-Second Line
+
+class StringUtils
+	
+	/*Private Constructor*/
+	private StringUtils(){}
+	
+	/*All Methods
+	 * Will add others soon
+	 */
+	String resolveNullString(String str)
+	boolean hasLength(String str)
+	boolean isArrayEmpty(Object obj[])
+	boolean isArrayNull(Object obj[])
+	boolean hasText(String str)
+	boolean containsWhiteSpace(String str)
+	String trimWhiteSpacesSync(String str)
+	StringBuffer removeLeadingWhiteSpaces(StringBuffer sb)
+	StringBuffer removeTrailingWhiteSpaces(StringBuffer sb)
+	String trimWhiteSpaces(String str)
+	StringBuilder removeLeadingWhiteSpaces(StringBuilder sb)
+	StringBuilder removeTrailingWhiteSpaces(StringBuilder sb)
+	String trimAllWhiteSpaces(String str)
+	String trimLeadingCharacter(String str, char character)
+	String trimTrailingCharacter(String str, char character)
+	boolean startsWithIgnoreCase(String str, String prefix)
+	boolean endsWithIgnoreCase(String str, String suffix)
+	int countOccurencesofString(String str, String subString)
+	String replace(String str, String oldPattern, String newPattern)
+	String delete(String str, String pattern)
+	String charsToDelete(String str, String charsToDelete)
+	String quote(String str)
+	String unQuote(String str)
+	Object quoteIfString(Object obj)
+	String capitalize(String str)
+	String upCapitalize(String str)
+	String changeFirstLetterCase(String str, boolean capitalize)
+	String unQualify(String str)
+	String unQualify(String str, char seperator)
+	String getFileName(String path)
+	String getFileNameExtension(String path)
+	String stripFileNameExtension(String path)
+	String[] addStringToArray(String arr[], String str)
+	String[] concatenateStringArrays(String array1[], String array2[])
+	String[] mergeStringArrays(String array1[], String array2[])
+	String[] toStringArray(Collection<String> collection)
+	String[] toStringArray(Enumeration<String> enumeration)
+	String[] sortStringArray(String[] array)
+	String[] trimArrayElements(String[] array)
+	ArrayList<String> trimStringList(ArrayList<String> list)
+	String[] removeDuplicateStrings(String[] array)
+	String[] split(String str, String delimiter)
+	LinkedHashMap<String, String> splitArrayElementsIntoProperties
+	LinkedHashMap<String, String> splitArrayElementsIntoProperties(String[] array, String delimiter, String charsToDelete)
+	String[] tokenizetoStringArray(String str, String delimiter)
+	String[] tokenizetoStringArray(String str, String delimiter, boolean trimTokens, boolean ignoreEmptyTokens)
+	String getStackTrace(Throwable throwable)
+	String[] sortStringArrayOfIntegers(String str[])
+	String[] sortStringArrayOfIntegers(ArrayList<String> str)
+	String[] mergeInSortedWay(String[] str1, String str2[])
+
+	
+class ArrayUtils
+	
+	/*Private Constructor*/
+	private StringUtils(){}
+	
+	/*All Methods
+	 * Will add others soon
+	 */
+	 <E> boolean isEmpty(Collection<? super E> collection)
+	 <T> Set<T> union(Set<T> setA, Set<T> setB)
+	 <T> Set<T> intersection(Set<T> setA, Set<T> setB)
+	 <T> boolean isSubSet(Set<T> setA, Set<T> setB)
+	 <T> Set<T> cartesianProduct(Set<T> setA, Set<T> setB)
+	 <T> Set<T> diffAbyB(Set<T> setA, Set<T> setB)
+	 <T> List<T> unionList(List<T> list1, List<T> list2)
+	 <T> List<T> intersectList(List<T> list1, List<T> list2)
+	 <T> boolean isSubSetList(List<T> list1, List<T> list2)
+	 <T> List<T> cartesianProductList(List<T> listA, List<T> listB)
+	 List<Integer> addIntegerLists(List<Integer> listA, List<Integer> listB)
+	 List<Float> addFloatLists(List<Float> listA, List<Float> listB)
+	 List<Double> addDoubleLists(List<Double> listA, List<Double> listB)
+	 List<Integer> subtractIntegerLists(List<Integer> listA, List<Integer> listB)
+	 List<Float> subtractFloatLists(List<Float> listA, List<Float> listB)
+	 List<Double> subtractDoubleLists(List<Double> listA, List<Double> listB)
+	 List<Integer> multiplyIntegerLists(List<Integer> listA, List<Integer> listB)
+	 List<Float> multiplyFloatLists(List<Float> listA, List<Float> listB)
+	 List<Double> multiplyDoubleLists(List<Double> listA, List<Double> listB)
+	 List<Integer> divideIntegerLists(List<Integer> listA, List<Integer> listB)
+	 List<Float> divideFloatLists(List<Float> listA, List<Float> listB)
+	 List<Double> divideDoubleLists(List<Double> listA, List<Double> listB)
+	 List<Object> absIntegerList(List<Object> listA)
+	 	|-- private static List<Object> abs(List<Object> listA)
+	 boolean listEqualsString(List<String> listA, List<String> listB)
+	 	|--private static Comparator<String> StringComparatorCaseSensitive
+	 <T> boolean isSizeZero(List<T> list)
+	 <T> boolean isListNull(List<T> list)
+	 <T> boolean subArray(List<T> listA, List<T> listB)
