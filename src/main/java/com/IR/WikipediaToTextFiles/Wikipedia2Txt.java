@@ -1,30 +1,23 @@
 package com.IR.WikipediaToTextFiles;
 
 import info.bliki.wiki.dump.IArticleFilter;
+
 import info.bliki.wiki.dump.Siteinfo;
 import info.bliki.wiki.dump.WikiArticle;
 import info.bliki.wiki.dump.WikiXMLParser;
 import info.bliki.wiki.filter.PlainTextConverter;
 import info.bliki.wiki.model.WikiModel;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.xml.sax.SAXException;
-
-import com.IR.BufferedReaders.BufferedWriters;
-import com.google.code.externalsorting.ExternalSort;
 
 public class Wikipedia2Txt {
 
@@ -39,7 +32,7 @@ public class Wikipedia2Txt {
 	static BufferedWriter bw;
 	public static void main(String[] args) throws IOException, SAXException {
 
-		String dumpfile = "D:\\My Personel\\Information Retrival\\Corpus\\enwiki-latest-pages-articles.xml";
+		String dumpfile = "E:\\My Personel\\Information Retrival\\Corpus\\enwiki-latest-pages-articles.xml";
 
 		IArticleFilter handler = new ArticleFilter();
 		WikiXMLParser wxp = new WikiXMLParser(dumpfile, handler);
