@@ -105,20 +105,9 @@ public class ArrayUtils {
 		// to primitive
 		
 		
+		//populationStandardDeviation
+		System.out.println(standardDeviationDouble(Arrays.asList(1d,2d,3d,4d,5d,6d,7d,8d),false));
 		
-		//Set<Object> a = new LinkedHashSet<Object>(); 
-		/*a.add("a"); 
-		a.add("b");*/
-		//System.out.println(a);
-		//Set<Object> b = new LinkedHashSet<Object>();
-		/*b.add("a");
-		b.add("d");*/
-		//System.out.println(b);
-		
-		//System.out.println(diffAbyB(a,b));
-		vanderCorputsequence(1,20,false);
-		List<Integer> pri=composite();
-		//System.out.println(pri);
 		List<String> list1 = new ArrayList<String>();
 		list1.add("A");
 		list1.add("r");
@@ -1714,5 +1703,195 @@ public class ArrayUtils {
 				}
 			}
 		}
+	}
+	
+	/**
+	 * *
+	 * Standard Deviation (SD) (represented by the Greek letter sigma, σ) 
+	 * measures the amount of variation or dispersion from the average.
+	 *
+	 * @param list the list
+	 * @return the double
+	 */
+	public static double sumDouble(List<Double> list){
+		
+		double sum=0;
+		for (int i = 0; i < list.size(); i++) {
+			sum+=list.get(i);
+		}
+		return sum;
+	}
+	
+	/**
+	 * Mean double.
+	 *
+	 * @param list the list
+	 * @return the double
+	 */
+	public static double meanDouble(List<Double> list){
+		
+		return sumDouble(list)/list.size();
+	}
+	
+	/**
+	 * Variance double.
+	 *
+	 * @param list the list
+	 * @param populationStandardDeviation the population standard deviation
+	 * @return the double
+	 */
+	public static double varianceDouble(List<Double> list,boolean populationStandardDeviation){
+		
+		double mean=meanDouble(list);
+		double variance=0;
+		for (int i = 0; i < list.size(); i++) {
+			double a=Math.pow(list.get(i)-mean,2);
+			variance+=a;
+		}
+		if(populationStandardDeviation){
+			return variance/list.size();	
+		}
+		return variance/(list.size()-1);
+	}
+	//Population Standard Deviation
+	/**
+	 * Standard deviation double.
+	 *
+	 * @param list the list
+	 * @param populationStandardDeviation the population standard deviation
+	 * @return the double
+	 */
+	public static double standardDeviationDouble(List<Double> list,boolean populationStandardDeviation){
+		
+		if(populationStandardDeviation){
+			return Math.sqrt(varianceDouble(list,populationStandardDeviation));
+		}
+		return Math.sqrt(varianceDouble(list,populationStandardDeviation));
+		
+	}
+	
+	/**
+	 * Sum long.
+	 *
+	 * @param list the list
+	 * @return the long
+	 */
+	public static long sumLong(List<Long> list) {
+
+		long sum = 0;
+		for (int i = 0; i < list.size(); i++) {
+			sum += list.get(i);
+		}
+		return sum;
+	}
+	
+	/**
+	 * Mean long.
+	 *
+	 * @param list the list
+	 * @return the long
+	 */
+	public static long meanLong(List<Long> list) {
+
+		return sumLong(list)/list.size();
+	}
+
+	/**
+	 * Variance long.
+	 *
+	 * @param list the list
+	 * @param populationStandardDeviation the population standard deviation
+	 * @return the long
+	 */
+	public static long varianceLong(List<Long> list,boolean populationStandardDeviation){
+		
+		long mean=meanLong(list);
+		long variance=0;
+		for (int i = 0; i < list.size(); i++) {
+			long a=(long) Math.pow(list.get(i)-mean,2);
+			variance+=a;
+		}
+		if(populationStandardDeviation){
+			return variance/list.size();	
+		}
+		return variance/(list.size()-1);
+	}
+	//Population Standard Deviation
+	/**
+	 * Standard deviation long.
+	 *
+	 * @param list the list
+	 * @param populationStandardDeviation the population standard deviation
+	 * @return the double
+	 */
+	public static double standardDeviationLong(List<Long> list,boolean populationStandardDeviation){
+		
+		if(populationStandardDeviation){
+			return Math.sqrt(varianceLong(list,populationStandardDeviation));
+		}
+		return Math.sqrt(varianceLong(list,populationStandardDeviation));
+		
+	}
+	
+	/**
+	 * Sum integer.
+	 *
+	 * @param list the list
+	 * @return the int
+	 */
+	public static int sumInteger(List<Integer> list) {
+
+		int sum = 0;
+		for (int i = 0; i < list.size(); i++) {
+			sum += list.get(i);
+		}
+		return sum;
+	}
+	
+	/**
+	 * Mean integer.
+	 *
+	 * @param list the list
+	 * @return the int
+	 */
+	public static int meanInteger(List<Integer> list) {
+
+		return sumInteger(list)/list.size();
+	}
+	
+	/**
+	 * Variance integer.
+	 *
+	 * @param list the list
+	 * @param populationStandardDeviation the population standard deviation
+	 * @return the int
+	 */
+	public static int varianceInteger(List<Integer> list,boolean populationStandardDeviation){
+		
+		int mean=meanInteger(list);
+		int variance=0;
+		for (int i = 0; i < list.size(); i++) {
+			int a=(int) Math.pow(list.get(i)-mean,2);
+			variance+=a;
+		}
+		if(populationStandardDeviation){
+			return variance/list.size();	
+		}
+		return variance/(list.size()-1);
+	}
+	//Population Standard Deviation
+	/**
+	 * Standard deviation integer.
+	 *
+	 * @param list the list
+	 * @param populationStandardDeviation the population standard deviation
+	 * @return the int
+	 */
+	public static int standardDeviationInteger(List<Integer> list,boolean populationStandardDeviation){
+		
+		if(populationStandardDeviation){
+			return (int) Math.sqrt(varianceInteger(list,populationStandardDeviation));
+		}
+		return (int) Math.sqrt(varianceInteger(list,populationStandardDeviation));
 	}
 }
