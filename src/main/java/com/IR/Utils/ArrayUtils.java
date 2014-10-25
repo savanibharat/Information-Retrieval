@@ -116,7 +116,7 @@ public class ArrayUtils {
 		//System.out.println(b);
 		
 		//System.out.println(diffAbyB(a,b));
-
+		vanderCorputsequence(1,20,false);
 		List<Integer> pri=composite();
 		//System.out.println(pri);
 		List<String> list1 = new ArrayList<String>();
@@ -1684,4 +1684,35 @@ public class ArrayUtils {
 		return characterArray;
 	}
 	
+	/**
+	 * A van der Corput sequence is a low-discrepancy sequence over the unit interval .
+	 *
+	 * @param start the start
+	 * @param end the end
+	 * @param binary the binary
+	 */
+	public static void vanderCorputsequence(int start, int end,boolean binary){
+		
+		if (binary) {
+			for (int i = start; i <= start; i++) {
+				for (int j = 1; j < end; j++) {
+					StringBuffer sb = new StringBuffer(
+							Integer.toBinaryString(j)).reverse();
+					String t = sb.toString();
+					String a = i + "." + t;
+					System.out.println(a);
+				}
+			}
+		}
+		else{
+			for (int i = start; i <= start; i++) {
+				for (int j = 1; j < end; j++) {
+					StringBuffer sb = new StringBuffer(j+"").reverse();
+					String t = sb.toString();
+					String a = i + "." + t;
+					System.out.println(a);
+				}
+			}
+		}
+	}
 }
