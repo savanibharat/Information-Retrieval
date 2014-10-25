@@ -18,6 +18,7 @@ limitations under the License.
 package com.IR.Utils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -33,6 +34,54 @@ import java.util.Set;
  */
 public class ArrayUtils {
 
+	/** The Constant BYTE_ARRAY. */
+	public static final byte[] BYTE_ARRAY=new byte[0];
+	
+	/** The Constant BYTE_WRAPPER_ARRAY. */
+	public static final Byte[] BYTE_WRAPPER_ARRAY=new Byte[0];
+	
+	/** The Constant SHORT_ARRAY. */
+	public static final short[] SHORT_ARRAY=new short[0];
+	
+	/** The Constant SHORT_WRAPPER_ARRAY. */
+	public static final Short[] SHORT_WRAPPER_ARRAY=new Short[0];
+	
+	/** The Constant INT_ARRAY. */
+	public static final int[] INT_ARRAY=new int[0];
+	
+	/** The Constant INTEGER_WRAPPER_ARRAY. */
+	public static final Integer[] INTEGER_WRAPPER_ARRAY=new Integer[0];
+	
+	/** The Constant LONG_ARRAY. */
+	public static final long[] LONG_ARRAY=new long[0];
+	
+	/** The Constant LONG_WRAPPER_ARRAY. */
+	public static final Long[] LONG_WRAPPER_ARRAY=new Long[0];
+	
+	/** The Constant FLOAT_ARRAY. */
+	public static final float[] FLOAT_ARRAY=new float[0];
+	
+	/** The Constant FLOAT_WRAPPER_ARRAY. */
+	public static final Float[] FLOAT_WRAPPER_ARRAY=new Float[0];
+	
+	/** The Constant DOUBLE_ARRAY. */
+	public static final double[] DOUBLE_ARRAY=new double[0];
+	
+	/** The Constant DOUBLE_WRAPPER_ARRAY. */
+	public static final Double[] DOUBLE_WRAPPER_ARRAY=new Double[0];
+	
+	/** The Constant BOOLEAN_ARRAY. */
+	public static final boolean[] BOOLEAN_ARRAY=new boolean[0];
+	
+	/** The Constant BOOLEAN_WRAPPER_ARRAY. */
+	public static final Boolean[] BOOLEAN_WRAPPER_ARRAY=new Boolean[0];
+	
+	/** The Constant CHAR_ARRAY. */
+	public static final char[] CHAR_ARRAY=new char[0];
+	
+	/** The Constant CHARACTER_WRAPPER_ARRAY. */
+	public static final Character[] CHARACTER_WRAPPER_ARRAY=new Character[0];
+	
 	/**
 	 * The main method.
 	 *
@@ -68,18 +117,20 @@ public class ArrayUtils {
 		
 		//System.out.println(diffAbyB(a,b));
 
+		List<Integer> pri=composite();
+		//System.out.println(pri);
 		List<String> list1 = new ArrayList<String>();
 		list1.add("A");
 		list1.add("r");
 		list1.add("a");
-		System.out.println(list1);
+		//System.out.println(list1);
 		List<String> list2 = new ArrayList<String>();
 		
 		list2.add("r");
 		list2.add("A");
 		list2.add("A");
-		System.out.println(list2);
-		System.out.println(subArray(list1,list2));
+		//System.out.println(list2);
+		//System.out.println(subArray(list1,list2));
 		List<Object> list=new ArrayList<Object>();
 		list.add(1);
 		list.add(-1);
@@ -1249,14 +1300,6 @@ public class ArrayUtils {
 		}
 	};
 
-	/*
-	 * private static Comparator<String> StringComparatorCaseInSensitive=new
-	 * Comparator<String>() { public int compare(String o1, String o2) {
-	 * if(o1==null && o2==null){ return 0; } if(o1==null){ return 1; }
-	 * if(o2==null){ return -1; } return
-	 * o1.toLowerCase().compareTo(o2.toLowerCase()); } };
-	 */
-
 	/**
 	 * Checks if is size zero.
 	 *
@@ -1380,4 +1423,265 @@ public class ArrayUtils {
 	public static <T> void reverseListShallowCopy(List<T> list){
 		Collections.reverse(list);
 	}
+	
+	/**
+	 * Primes.
+	 *
+	 * @return the int[]
+	 */
+	public static List<Integer> primes() {
+
+		int N = 10000;
+		boolean[] isPrime = new boolean[N];
+		for (int i = 0; i < isPrime.length; i++) {
+			isPrime[i] = true;
+		}
+		for (int i = 2; i * i < N; i++) {
+			if (isPrime[i]) {
+				for (int j = i; i * j < N; j++) {
+					isPrime[i * j] = false;
+				}
+			}
+		}
+		for (int i = 2; i < isPrime.length; i++) {
+			if (isPrime[i]) {
+			}
+		}
+		List<Integer> list=new ArrayList<Integer>();
+		for (int i = 0; i < isPrime.length; i++) {
+			if(isPrime[i]){
+				list.add(i);
+			}
+		}
+		return list;
+	}
+	
+	/**
+	 * Composite.
+	 *
+	 * @return the list
+	 */
+	public static List<Integer> composite() {
+
+		List<Integer> primes=primes();
+		List<Integer> composite=new ArrayList<Integer>();
+		Object[] obj=primes.toArray();
+		for (int i = 3; i < obj.length; i++) {
+			
+			if(Arrays.binarySearch(obj, i)<0){
+				composite.add(i);
+			}
+		}
+		return composite;
+	}
+	
+	
+	/**
+	 * Resolve null.
+	 *
+	 * @param byteArray the byte array
+	 * @return the byte[]
+	 */
+	public static byte[] resolveNull(byte[] byteArray){
+		if(byteArray==null||byteArray.length==0){
+			return BYTE_ARRAY;
+		}
+		return byteArray;
+	}
+	
+	/**
+	 * Resolve null.
+	 *
+	 * @param byteArray the byte array
+	 * @return the byte[]
+	 */
+	public static Byte[] resolveNull(Byte[] byteArray){
+		if(byteArray==null||byteArray.length==0){
+			return BYTE_WRAPPER_ARRAY;
+		}
+		return byteArray;
+	}
+	
+	/**
+	 * Resolve null.
+	 *
+	 * @param shortArray the short array
+	 * @return the short[]
+	 */
+	public static short[] resolveNull(short[] shortArray){
+		if(shortArray==null||shortArray.length==0){
+			return SHORT_ARRAY;
+		}
+		return shortArray;
+	}
+	
+	/**
+	 * Resolve null.
+	 *
+	 * @param shortArray the short array
+	 * @return the short[]
+	 */
+	public static Short[] resolveNull(Short[] shortArray){
+		if(shortArray==null||shortArray.length==0){
+			return SHORT_WRAPPER_ARRAY;
+		}
+		return shortArray;
+	}
+	
+	/**
+	 * Resolve null.
+	 *
+	 * @param intArray the int array
+	 * @return the int[]
+	 */
+	public static int[] resolveNull(int[] intArray){
+		if(intArray==null||intArray.length==0){
+			return INT_ARRAY;
+		}
+		return intArray;
+	}
+	
+	/**
+	 * Resolve null.
+	 *
+	 * @param integerArray the integer array
+	 * @return the integer[]
+	 */
+	public static Integer[] resolveNull(Integer[] integerArray){
+		if(integerArray==null||integerArray.length==0){
+			return INTEGER_WRAPPER_ARRAY;
+		}
+		return integerArray;
+	}
+	
+	/**
+	 * Resolve null.
+	 *
+	 * @param longArray the long array
+	 * @return the long[]
+	 */
+	public static long[] resolveNull(long[] longArray){
+		if(longArray==null||longArray.length==0){
+			return LONG_ARRAY;
+		}
+		return longArray;
+	}
+	
+	/**
+	 * Resolve null.
+	 *
+	 * @param longArray the long array
+	 * @return the long[]
+	 */
+	public static Long[] resolveNull(Long[] longArray){
+		if(longArray==null||longArray.length==0){
+			return LONG_WRAPPER_ARRAY;
+		}
+		return longArray;
+	}
+	
+	/**
+	 * Resolve null.
+	 *
+	 * @param floatArray the float array
+	 * @return the float[]
+	 */
+	public static float[] resolveNull(float[] floatArray){
+		if(floatArray==null||floatArray.length==0){
+			return FLOAT_ARRAY;
+		}
+		return floatArray;
+	}
+	
+	/**
+	 * Resolve null.
+	 *
+	 * @param floatArray the float array
+	 * @return the float[]
+	 */
+	public static Float[] resolveNull(Float[] floatArray){
+		if(floatArray==null||floatArray.length==0){
+			return FLOAT_WRAPPER_ARRAY;
+		}
+		return floatArray;
+	}
+	
+	/**
+	 * Resolve null.
+	 *
+	 * @param doubleArray the double array
+	 * @return the double[]
+	 */
+	public static double[] resolveNull(double[] doubleArray){
+		if(doubleArray==null||doubleArray.length==0){
+			return DOUBLE_ARRAY;
+		}
+		return doubleArray;
+	}
+	
+	/**
+	 * Resolve null.
+	 *
+	 * @param doubleArray the double array
+	 * @return the double[]
+	 */
+	public static Double[] resolveNull(Double[] doubleArray){
+		if(doubleArray==null||doubleArray.length==0){
+			return DOUBLE_WRAPPER_ARRAY;
+		}
+		return doubleArray;
+	}
+	
+	/**
+	 * Resolve null.
+	 *
+	 * @param booleanArray the boolean array
+	 * @return the boolean[]
+	 */
+	public static boolean[] resolveNull(boolean[] booleanArray){
+		if(booleanArray==null||booleanArray.length==0){
+			return BOOLEAN_ARRAY;
+		}
+		return booleanArray;
+	}
+	
+	/**
+	 * Resolve null.
+	 *
+	 * @param booleanArray the boolean array
+	 * @return the boolean[]
+	 */
+	public static Boolean[] resolveNull(Boolean[] booleanArray){
+		if(booleanArray==null||booleanArray.length==0){
+			return BOOLEAN_WRAPPER_ARRAY;
+		}
+		return booleanArray;
+	}
+	
+	/**
+	 * Resolve null.
+	 *
+	 * @param charArray the char array
+	 * @return the char[]
+	 */
+	public static char[] resolveNull(char[] charArray){
+		if(charArray==null||charArray.length==0){
+			return CHAR_ARRAY;
+		}
+		return charArray;
+	}
+	
+	/**
+	 * Resolve null.
+	 *
+	 * @param characterArray the character array
+	 * @return the character[]
+	 */
+	public static Character[] resolveNull(Character[] characterArray){
+		if(characterArray==null||characterArray.length==0){
+			return CHARACTER_WRAPPER_ARRAY;
+		}
+		return characterArray;
+	}
+	
 }
