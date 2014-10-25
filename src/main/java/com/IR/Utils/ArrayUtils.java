@@ -24,7 +24,6 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 // TODO: Auto-generated Javadoc
@@ -1316,67 +1315,5 @@ public class ArrayUtils {
 			return true;
 		}
 		return listA.containsAll(listB);
-	}
-	/**
-	 * Key of HashMap to list.
-	 *
-	 * @param <T> the generic type
-	 * @param <K> the key type
-	 * @param <V> the value type
-	 * @param map the map
-	 * @return the list
-	 */
-	public static <T, K, V> List<K> keyToList(Map<K,V> map){
-		List<K> list=new ArrayList<K>();
-		for (K mapper : map.keySet()) {
-			list.add(mapper);
-		}
-		return list;
-	}
-	
-	/**
-	 * Values to list.
-	 *
-	 * @param <T> the generic type
-	 * @param <K> the key type
-	 * @param <V> the value type
-	 * @param map the map
-	 * @return the list
-	 */
-	public static <T,K,V> List<V> valuesToList(Map<K,V> map){
-		return new ArrayList<V>(map.values());
-	}
-	
-	/**
-	 * Reverse list.
-	 *
-	 * @param <T> the generic type
-	 * @param list the list
-	 * @param shallowCopy the shallow copy
-	 * @return the list
-	 */
-	public static <T> List<T> reverseList(List<T> list,boolean shallowCopy){
-		
-		if(shallowCopy){
-			reverseListShallowCopy(list);
-		}
-		else{//Deep copy and then reverse
-			List<T> list1=new ArrayList<T>();
-			for (int i = list.size()-1; i >=0; i--) {
-				list1.add(list.get(i));
-			}
-			return list1;
-		}
-		return null;
-	}
-	
-	/**
-	 * Reverse list shallow copy.
-	 *
-	 * @param <T> the generic type
-	 * @param list the list
-	 */
-	public static <T> void reverseListShallowCopy(List<T> list){
-		Collections.reverse(list);
 	}
 }
