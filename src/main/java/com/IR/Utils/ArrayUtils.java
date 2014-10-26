@@ -1899,6 +1899,13 @@ public class ArrayUtils {
 		return (int) Math.sqrt(varianceInteger(list,populationStandardDeviation));
 	}
 	
+	/**
+	 * Distance.
+	 *
+	 * @param p1 the p1
+	 * @param p2 the p2
+	 * @return the float
+	 */
 	public static float distance(Point p1,Point p2){
 		
 		float x2=p2.getX();
@@ -1910,6 +1917,14 @@ public class ArrayUtils {
 		System.out.println(y);
 		return (float)y;
 	}
+	
+	/**
+	 * Mid point.
+	 *
+	 * @param p1 the p1
+	 * @param p2 the p2
+	 * @return the point
+	 */
 	public static Point midPoint(Point p1,Point p2){
 		
 		float x1=p1.getX();
