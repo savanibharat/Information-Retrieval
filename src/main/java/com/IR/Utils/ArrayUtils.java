@@ -106,8 +106,12 @@ public class ArrayUtils {
 		
 		
 		//populationStandardDeviation
-		System.out.println(standardDeviationDouble(Arrays.asList(1d,2d,3d,4d,5d,6d,7d,8d),false));
-		
+		//System.out.println(standardDeviationDouble(Arrays.asList(1d,2d,3d,4d,5d,6d,7d,8d),false));
+		Point p1=new Point(3,-4);
+		Point p2=new Point(-1,3);
+		Point p3=midPoint(p1, p2);
+		System.out.println(p3.getX());
+		System.out.println(p3.getY());
 		List<String> list1 = new ArrayList<String>();
 		list1.add("A");
 		list1.add("r");
@@ -1893,5 +1897,27 @@ public class ArrayUtils {
 			return (int) Math.sqrt(varianceInteger(list,populationStandardDeviation));
 		}
 		return (int) Math.sqrt(varianceInteger(list,populationStandardDeviation));
+	}
+	
+	public static float distance(Point p1,Point p2){
+		
+		float x2=p2.getX();
+		float x1=p1.getX();
+		float y2=p2.getY();
+		float y1=p1.getY();
+		
+		double y=(float)Math.sqrt(Math.pow((x2-x1),2)+Math.pow((y2-y1),2));
+		System.out.println(y);
+		return (float)y;
+	}
+	public static Point midPoint(Point p1,Point p2){
+		
+		float x1=p1.getX();
+		float y1=p1.getY();
+		float x2=p2.getX();
+		float y2=p2.getY();
+		
+		return new Point(((x1+x2)/2),((y1+y2)/2));
+		
 	}
 }
