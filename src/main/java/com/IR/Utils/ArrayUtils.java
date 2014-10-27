@@ -22,6 +22,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -82,62 +83,8 @@ public class ArrayUtils {
 	/** The Constant CHARACTER_WRAPPER_ARRAY. */
 	public static final Character[] CHARACTER_WRAPPER_ARRAY=new Character[0];
 	
-	/**
-	 * The main method.
-	 *
-	 * @param args
-	 *            the arguments
-	 */
-	public static void main(String[] args) {
-
-		// set operations ordered set
-		//convert ket to list value to list etc
-		// add subs multi divide mod
-		// equal not equal
-		// to set to map
-		// auto fill
-		// nulltoempty
-		// subarray
-		// reverse
-		// indexof
-		// lastindexof
-		// contains
-		// to primitive
-		
-		
-		//populationStandardDeviation
-		//System.out.println(standardDeviationDouble(Arrays.asList(1d,2d,3d,4d,5d,6d,7d,8d),false));
-		Point p1=new Point(3,-4);
-		Point p2=new Point(-1,3);
-		Point p3=midPoint(p1, p2);
-		System.out.println(p3.getX());
-		System.out.println(p3.getY());
-		List<String> list1 = new ArrayList<String>();
-		list1.add("A");
-		list1.add("r");
-		list1.add("a");
-		//System.out.println(list1);
-		List<String> list2 = new ArrayList<String>();
-		
-		list2.add("r");
-		list2.add("A");
-		list2.add("A");
-		//System.out.println(list2);
-		//System.out.println(subArray(list1,list2));
-		List<Object> list=new ArrayList<Object>();
-		list.add(1);
-		list.add(-1);
-		list.add("-a");
-		list.add(-5f);
-		list.add(-8d);
-		//System.out.println(absIntegerList(list));
-		// System.out.println(union(b,a));
-		/*
-		 * System.out.println(isEmpty(a)); System.out.println(isEmpty(a));
-		 * System.out.println(isEmpty(a));
-		 */
-	}
-
+	public static final Object[] OBJECT_ARRAY =new Object[0];
+	
 	/**
 	 * Checks if is empty.
 	 *
@@ -1677,6 +1624,13 @@ public class ArrayUtils {
 		return characterArray;
 	}
 	
+	public static Object[] resolveNull(Object[] objectArray){
+		if(objectArray==null||objectArray.length==0){
+			return OBJECT_ARRAY;
+		}
+		return objectArray;
+	}
+	
 	/**
 	 * A van der Corput sequence is a low-discrepancy sequence over the unit interval .
 	 *
@@ -1906,16 +1860,16 @@ public class ArrayUtils {
 	 * @param p2 the p2
 	 * @return the float
 	 */
-	public static float distance(Point p1,Point p2){
+	public static double distance(Point p1,Point p2){
 		
-		float x2=p2.getX();
-		float x1=p1.getX();
-		float y2=p2.getY();
-		float y1=p1.getY();
+		double x2=p2.getX();
+		double x1=p1.getX();
+		double y2=p2.getY();
+		double y1=p1.getY();
 		
 		double y=(float)Math.sqrt(Math.pow((x2-x1),2)+Math.pow((y2-y1),2));
 		System.out.println(y);
-		return (float)y;
+		return y;
 	}
 	
 	/**
@@ -1927,12 +1881,99 @@ public class ArrayUtils {
 	 */
 	public static Point midPoint(Point p1,Point p2){
 		
-		float x1=p1.getX();
-		float y1=p1.getY();
-		float x2=p2.getX();
-		float y2=p2.getY();
+		double x1=p1.getX();
+		double y1=p1.getY();
+		double x2=p2.getX();
+		double y2=p2.getY();
 		
 		return new Point(((x1+x2)/2),((y1+y2)/2));
-		
 	}
+	
+	public static void hailStoneSequence(double d){
+		d=27;
+		if(d<0){
+			return;
+		}
+		List<Double> list=new ArrayList<Double>();
+		while(d!=1){
+			if((d%2)==0){
+				d=d/2;
+			}
+			else{
+				d=(3*d)+1;
+			}
+			list.add(d);
+		}
+		System.out.println(list);
+		System.out.println(list.size());
+	}
+	
+	public static Object[] uniqueElements(Object[] data){
+		if(data==null || data.length==0){
+			return OBJECT_ARRAY;
+		}
+		Set<Object> set=new HashSet<Object>(Arrays.asList(data));
+		System.out.println(set);
+		data=set.toArray();
+		return data;
+	}
+	
+	/**
+	 * The main method.
+	 *
+	 * @param args
+	 *            the arguments
+	 */
+	public static void main(String[] args) {
+
+		// set operations ordered set
+		//convert ket to list value to list etc
+		// add subs multi divide mod
+		// equal not equal
+		// to set to map
+		// auto fill
+		// nulltoempty
+		// subarray
+		// reverse
+		// indexof
+		// lastindexof
+		// contains
+		// to primitive
+		Object[] obj={};
+		uniqueElements(obj);
+		hailStoneSequence(10);
+		//populationStandardDeviation
+		//System.out.println(standardDeviationDouble(Arrays.asList(1d,2d,3d,4d,5d,6d,7d,8d),false));
+		Point p1=new Point(3,-4);
+		Point p2=new Point(-1,3);
+		Point p3=midPoint(p1, p2);
+		System.out.println(p3.getX());
+		System.out.println(p3.getY());
+		List<String> list1 = new ArrayList<String>();
+		list1.add("A");
+		list1.add("r");
+		list1.add("a");
+		//System.out.println(list1);
+		List<String> list2 = new ArrayList<String>();
+		
+		list2.add("r");
+		list2.add("A");
+		list2.add("A");
+		//System.out.println(list2);
+		//System.out.println(subArray(list1,list2));
+		List<Object> list=new ArrayList<Object>();
+		list.add(1);
+		list.add(-1);
+		list.add("-a");
+		list.add(-5f);
+		list.add(-8d);
+		//System.out.println(absIntegerList(list));
+		// System.out.println(union(b,a));
+		/*
+		 * System.out.println(isEmpty(a)); System.out.println(isEmpty(a));
+		 * System.out.println(isEmpty(a));
+		 */
+	}
+
+	
 }
